@@ -12,8 +12,6 @@ public class Palindrome implements Playable{
         return cutStr.equalsIgnoreCase(new StringBuffer(cutStr).reverse().toString());
     }
 
-
-
     private int calculateScores(String cutStr) {
         return cutStr.length();
     }
@@ -28,11 +26,12 @@ public class Palindrome implements Playable{
             user.addToEnteredPalindromesList(cutStr);
 
             System.out.println(user.getUserName() + " wins, scores = " + user.getScores());
+                users.usersHashMap.put(user.getUserName(), user);
+                Users.saveUsers();
 
             } else {
             System.out.println(user.getUserName() + " loose, scores = " + user.getScores());
             }
-        users.usersHashMap.put(user.getUserName(), user);
-        Users.saveUsers();
+
     }
 }

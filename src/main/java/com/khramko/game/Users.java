@@ -1,7 +1,6 @@
 package com.khramko.game;
 
 import com.khramko.game.entity.User;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;

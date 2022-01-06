@@ -1,7 +1,5 @@
 package com.khramko.game.entity;
 import com.khramko.game.Playable;
-
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -22,9 +20,6 @@ public class User implements Serializable, Comparable<User> {
         this.userName = name;
         this.enteredPalindromes = new ArrayList<>();
         }
-
-
-
 
     public void playGame(String str, Playable playable) {
      playable.play(this, str);
