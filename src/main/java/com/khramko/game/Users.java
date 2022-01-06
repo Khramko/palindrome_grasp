@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-//Singleton. Object stores progress information and players in the usersHashMap fields.
-// Provides Top5 method that returns an array of five users with the largest amount of points.
+
 public class Users implements Serializable {
     static final long serialVersionUID = 1;
     public HashMap<String, User> usersHashMap;
@@ -26,10 +25,7 @@ public class Users implements Serializable {
         return uniqueInstance;
     }
 
-
-
     private static void loadUsers() {
-
         File file = new File("users.bin");
         if (file.exists()) {
             try (ObjectInputStream inputStream = new ObjectInputStream(
@@ -71,13 +67,9 @@ public class Users implements Serializable {
         ArrayList<User> usersArrayList = new ArrayList<>(this.usersHashMap.values());
         Collections.sort(usersArrayList);
         int a = usersArrayList.size();
-        int d;
-        if (a<5){d=a;}else{d=5;}
-        //System.out.println(usersArrayList);
+        int d = Math.min(a, 5);
         User [] top5 = new User[d];
-        for(int i=0; i<d; i++){
-            top5[i]=usersArrayList.get(i);
-        }
+        for(int i=0; i<d; i++) top5[i] = usersArrayList.get(i);
         return top5;
     }
 

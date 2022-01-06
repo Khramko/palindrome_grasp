@@ -9,8 +9,7 @@ public class Palindrome implements Playable{
     }
 
     private boolean isPalindrome(String cutStr) {
-        boolean isPalindrome = cutStr.equalsIgnoreCase(new StringBuffer(cutStr).reverse().toString());
-        return isPalindrome;
+        return cutStr.equalsIgnoreCase(new StringBuffer(cutStr).reverse().toString());
     }
 
 
@@ -34,6 +33,6 @@ public class Palindrome implements Playable{
             System.out.println(user.getUserName() + " loose, scores = " + user.getScores());
             }
         users.usersHashMap.put(user.getUserName(), user);
-        users.saveUsers();
+        Users.saveUsers();
     }
 }

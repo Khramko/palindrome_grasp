@@ -1,29 +1,26 @@
 package com.khramko.game.entity;
 import com.khramko.game.Playable;
-import com.khramko.game.Users;
+
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Set;
 
 
-//User class, contains fields - state of a particular player (name, amount of won points, entered palindromes).
-//Provides game-method userPlayPalindromeGame  and static method of obtaining already existing, or create a new user createOrGetUser .
-//Class meets the Entity - class requirements, prepared to work with database.
+
 public class User implements Serializable, Comparable<User> {
     static final long serialVersionUID = 1;
     private int ID;
     private String userName;
     private int scores;
     private ArrayList<String> enteredPalindromes;
-    private Set<String> enteredPalindromesSet;
+
 
 //    public User() {
 //    }
 
     public User(String name) {
         this.userName = name;
-        this.enteredPalindromes = new ArrayList<String>();
+        this.enteredPalindromes = new ArrayList<>();
         }
 
 

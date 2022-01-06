@@ -15,6 +15,11 @@ public class Test {
 
        testGame("Georg", "Em to Greg: Gad! A dagger got me!");
 
+        testGame("Georg", "Em to Greg: Gad! A dagger got me!");
+        testGame("Georg", "Eva, can I stab bats in a cave?");
+        testGame("Naomi", "Eva, can I stab bats in a cave?");
+
+        testGame("Naomi", "Erupt on Naomi? I moan, Not pure!");
 
         // System.out.println(Users.getInstance());
 
