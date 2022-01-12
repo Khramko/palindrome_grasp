@@ -2,21 +2,13 @@ package com.khramko.game;
 
 import com.khramko.game.entity.User;
 
-import java.io.IOException;
-
-
 public class Test {
     private static void testGame(String name, String palindromeString) {
         Game palindromeGamePlay = new PalindromeGame(Users.getInstance());
         palindromeGamePlay.playGame(name, palindromeString);
     }
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Users users = Users.getInstance();
-        //users.createUser("Ivan");
-        User uriy = users.readUser("Uriy");
-        users.deleteUser(uriy);
-        testGame("Uriy","Erupt on Naomi? I moan, Not pure!");
-
 
 
        testGame("Georg","A tOyota! Race fast, safe car! A tOyota!");

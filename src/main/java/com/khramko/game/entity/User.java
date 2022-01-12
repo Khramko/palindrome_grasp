@@ -1,7 +1,7 @@
 package com.khramko.game.entity;
+
 import java.io.Serializable;
 import java.util.ArrayList;
-
 
 
 public class User implements Serializable, Comparable<User> {
@@ -18,16 +18,13 @@ public class User implements Serializable, Comparable<User> {
     public User(String name) {
         this.userName = name;
         this.enteredPalindromes = new ArrayList<>();
-        }
+    }
 
 
     public String getUserName() {
         return userName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
 
     public int getScores() {
         return scores;
@@ -38,20 +35,20 @@ public class User implements Serializable, Comparable<User> {
     }
 
 
-
-    public boolean isItNewUserString (String cutStr) {
+    public boolean isItNewUserString(String cutStr) {
         if (this.enteredPalindromes.isEmpty()) {
             System.out.println("empty new string");
             enteredPalindromes.add(cutStr);
             System.out.println(enteredPalindromes);
             return true;
-        } else if (this.enteredPalindromes.contains(cutStr))
-        {System.out.println("contains string");
-            return false;}
-        else{
+        } else if (this.enteredPalindromes.contains(cutStr)) {
+            System.out.println("contains string");
+            return false;
+        } else {
             this.enteredPalindromes.add(cutStr);
             System.out.println("new string");
-            return true;}
+            return true;
+        }
     }
 
     @Override
@@ -78,9 +75,8 @@ public class User implements Serializable, Comparable<User> {
 
     @Override
     public int compareTo(User anotherUser) {
-        return anotherUser.scores-this.scores;
+        return anotherUser.scores - this.scores;
     }
-
 
 
 }

@@ -1,25 +1,26 @@
 package com.khramko.game;
 
 import com.khramko.game.entity.User;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
 
-
 public class Users implements Serializable, UserDAO {
     static final long serialVersionUID = 1L;
     private HashMap<String, User> usersHashMap;
 
-    private Users(){
+    private Users() {
         this.usersHashMap = new HashMap<>();
     }
 
     private static Users uniqueInstance;
-    public static synchronized Users getInstance(){
+
+    public static synchronized Users getInstance() {
         loadUsers();
-        if (uniqueInstance == null){
+        if (uniqueInstance == null) {
             uniqueInstance = new Users();
         }
         return uniqueInstance;
@@ -39,28 +40,27 @@ public class Users implements Serializable, UserDAO {
         } else {
             saveUsers();
         }
- }
+    }
 
     private static void saveUsers() {
-       try (ObjectOutputStream outputStream = new ObjectOutputStream(
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(
                 new FileOutputStream("users.bin")
         )) {
             outputStream.writeObject(uniqueInstance);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
 
     @Override
-    public User [] getTop5(){
+    public User[] getTop5() {
         ArrayList<User> usersArrayList = new ArrayList<>(this.usersHashMap.values());
         Collections.sort(usersArrayList);
         int usersArrayListSize = usersArrayList.size();
         int tops5ArraySize = Math.min(usersArrayListSize, 5);
-        User [] top5 = new User[tops5ArraySize];
-        for(int i=0; i<tops5ArraySize; i++) top5[i] = usersArrayList.get(i);
+        User[] top5 = new User[tops5ArraySize];
+        for (int i = 0; i < tops5ArraySize; i++) top5[i] = usersArrayList.get(i);
         return top5;
     }
 
@@ -73,21 +73,18 @@ public class Users implements Serializable, UserDAO {
 
     @Override
     public User readUser(String userName) {
-        if (usersHashMap.containsKey(userName)){
-            User userOutput;
-            userOutput = usersHashMap.get(userName);
+        if (usersHashMap.containsKey(userName)) {
+            User userOutput = usersHashMap.get(userName);
             return userOutput;
-        }else{
+        } else {
             throw new IllegalArgumentException("User " + userName + " not found");
         }
-
-
     }
 
     @Override
     public void createUser(String userName) {
-        if (usersHashMap.containsKey(userName)){
-            throw new IllegalArgumentException("There is already created a user named "+ userName);
+        if (usersHashMap.containsKey(userName)) {
+            throw new IllegalArgumentException("There is already created a user named " + userName);
         }
         User userOutput = new User(userName);
         usersHashMap.put(userName, userOutput);
@@ -97,20 +94,19 @@ public class Users implements Serializable, UserDAO {
     @Override
     public void updateUser(User user) {
         if (usersHashMap.containsKey(user.getUserName())) {
-        usersHashMap.put(user.getUserName(), user);
-        saveUsers();
-        }else{
+            usersHashMap.put(user.getUserName(), user);
+            saveUsers();
+        } else {
             throw new IllegalArgumentException("User " + user.getUserName() + " not found");
         }
-
     }
 
     @Override
     public void deleteUser(User user) {
-        if (usersHashMap.containsKey(user.getUserName())){
+        if (usersHashMap.containsKey(user.getUserName())) {
             usersHashMap.remove(user.getUserName());
-        Users.saveUsers();
-        }else{
+            Users.saveUsers();
+        } else {
             throw new IllegalArgumentException("User " + user.getUserName() + " not found");
         }
     }

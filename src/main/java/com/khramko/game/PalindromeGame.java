@@ -2,7 +2,6 @@ package com.khramko.game;
 
 import com.khramko.game.entity.User;
 
-import java.io.IOException;
 
 public class PalindromeGame extends Game {
 
@@ -27,14 +26,14 @@ public class PalindromeGame extends Game {
         String cutStr = cutString(str);
         User user = userDAO.readUser(userName);
 
-            if (user.isItNewUserString(cutStr) && isPalindrome(cutStr)) {
+        if (user.isItNewUserString(cutStr) && isPalindrome(cutStr)) {
             user.setScores(user.getScores() + calculateScores(cutStr));
             System.out.println(userName + " wins, scores = " + user.getScores());
             userDAO.updateUser(user);
 
-            } else {
+        } else {
             System.out.println(userName + " loose, scores = " + user.getScores());
-            }
+        }
 
     }
 }

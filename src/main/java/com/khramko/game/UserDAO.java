@@ -8,11 +8,14 @@ import java.util.NoSuchElementException;
 public interface UserDAO {
 
         void createUser(String userName);
+
         User readUser(String userName);
+
         void updateUser(User user);
+
         void deleteUser(User user);
 
-        User [] getTop5();
+        User[] getTop5();
 
-    }
+}
 
