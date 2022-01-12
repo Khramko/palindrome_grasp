@@ -2,18 +2,26 @@ package com.khramko.game;
 
 import com.khramko.game.entity.User;
 
+import java.io.IOException;
+
+
 public class Test {
-    private static void testGame(String name, String palindrome){
-        Users users = Users.getInstance();
-        User user = users.createOrGetUser(name);
-        Playable palindromeGamePlay = new Palindrome();
-        user.playGame(palindrome, palindromeGamePlay);
+    private static void testGame(String name, String palindromeString) throws IOException {
+        Game palindromeGamePlay = new PalindromeGame(Users.getInstance());
+        palindromeGamePlay.playGame(name, palindromeString);
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        Users users = Users.getInstance();
+        //users.createUser("Ivan");
+        User uriy = users.readUser("Uriy");
+        users.deleteUser(uriy);
+        testGame("Uriy","Erupt on Naomi? I moan, Not pure!");
+
+
 
        testGame("Georg","A tOyota! Race fast, safe car! A tOyota!");
 
-       testGame("Georg", "Em to Greg: Gad! A dagger got me!");
+       testGame("Georg", "m to Greg: Gad! A dagger got m");
 
         testGame("Georg", "Em to Greg: Gad! A dagger got me!");
         testGame("Georg", "Eva, can I stab bats in a cave?");
@@ -21,37 +29,7 @@ public class Test {
 
         testGame("Naomi", "Erupt on Naomi? I moan, Not pure!");
 
-        // System.out.println(Users.getInstance());
-
-//    User petya = User.createOrGetUser("Petya");
-//
-//
-//    User lena = User.createOrGetUser("Lena");
-//
-//    User ivan = User.createOrGetUser("Ivan");
-//
-//    User tanya = User.createOrGetUser("Tanya");
-//
-//    User gennadiy = User.createOrGetUser("Gennadiy");
-//
-//    User bill = User.createOrGetUser("Bill");
-
-        //User naomi = User.createOrGetUser("Naomi");
-
-        // PalindromeGamePlay palindromeGamePlay = new PalindromeGamePlay();
-
-//
-//    bill.userPlayPalindromeGame("Emu love volume!!!", palindromeGamePlay);
-//
-//    gennadiy.userPlayPalindromeGame("Eva, can I stab bats in a cave?", palindromeGamePlay);
-
-        //  naomi.userPlayPalindromeGame("ABBA!!!", palindromeGamePlay);
-        // lena.userPlayPalindromeGame("ABBA!!!", palindromeGamePlay);
-
-//    bill.userPlayPalindromeGame("Erupt on Naomi? I moan, Not pure!", palindromeGamePlay);
-//
-//    tanya.userPlayPalindromeGame(".Пал, а норов худ и дух ворона лап", palindromeGamePlay);
-        Users users = Users.getInstance();
+       // Users users = Users.getInstance();
         User [] top5 = users.getTop5();
         System.out.println();
         System.out.println("Leaders board");

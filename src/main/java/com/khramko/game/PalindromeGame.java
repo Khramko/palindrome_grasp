@@ -2,7 +2,13 @@ package com.khramko.game;
 
 import com.khramko.game.entity.User;
 
-public class Palindrome implements Playable{
+import java.io.IOException;
+
+public class PalindromeGame extends Game {
+
+    public PalindromeGame(UserDAO userDAO) {
+        super(userDAO);
+    }
 
     private String cutString(String str) {
         return str.replaceAll("\\p{Punct}|\\s+", "");
@@ -17,20 +23,17 @@ public class Palindrome implements Playable{
     }
 
     @Override
-    public void play(User user, String str) {
+    public void playGame(String userName, String str) throws IOException {
         String cutStr = cutString(str);
-        Users users = Users.getInstance();
+        User user = userDAO.readUser(userName);
 
-            if (isPalindrome(cutStr) & user.isItNewUserString(cutStr)) {
+            if (user.isItNewUserString(cutStr) && isPalindrome(cutStr)) {
             user.setScores(user.getScores() + calculateScores(cutStr));
-            user.addToEnteredPalindromesList(cutStr);
-
-            System.out.println(user.getUserName() + " wins, scores = " + user.getScores());
-                users.usersHashMap.put(user.getUserName(), user);
-                Users.saveUsers();
+            System.out.println(userName + " wins, scores = " + user.getScores());
+            userDAO.updateUser(user);
 
             } else {
-            System.out.println(user.getUserName() + " loose, scores = " + user.getScores());
+            System.out.println(userName + " loose, scores = " + user.getScores());
             }
 
     }

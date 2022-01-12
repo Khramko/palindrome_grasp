@@ -1,12 +1,11 @@
 package com.khramko.game.entity;
-import com.khramko.game.Playable;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 
 
 public class User implements Serializable, Comparable<User> {
-    static final long serialVersionUID = 1;
+    static final long serialVersionUID = 1L;
     private int ID;
     private String userName;
     private int scores;
@@ -21,10 +20,6 @@ public class User implements Serializable, Comparable<User> {
         this.enteredPalindromes = new ArrayList<>();
         }
 
-    public void playGame(String str, Playable playable) {
-     playable.play(this, str);
-
-    }
 
     public String getUserName() {
         return userName;
@@ -42,13 +37,8 @@ public class User implements Serializable, Comparable<User> {
         this.scores = scores;
     }
 
-    public ArrayList<String> getEnteredPalindromes() {
-        return enteredPalindromes;
-    }
 
-    public void setEnteredPalindromes(ArrayList<String> enteredPalindromes) {
-        this.enteredPalindromes = enteredPalindromes;
-    }
+
     public boolean isItNewUserString (String cutStr) {
         if (this.enteredPalindromes.isEmpty()) {
             System.out.println("empty new string");
@@ -65,12 +55,32 @@ public class User implements Serializable, Comparable<User> {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (ID != user.ID) return false;
+        if (scores != user.scores) return false;
+        if (!userName.equals(user.userName)) return false;
+        return enteredPalindromes != null ? enteredPalindromes.equals(user.enteredPalindromes) : user.enteredPalindromes == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = ID;
+        result = 31 * result + userName.hashCode();
+        result = 31 * result + scores;
+        result = 31 * result + (enteredPalindromes != null ? enteredPalindromes.hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public int compareTo(User anotherUser) {
         return anotherUser.scores-this.scores;
     }
 
 
-    public void addToEnteredPalindromesList(String cutStr) {
-        enteredPalindromes.add(cutStr);
-    }
+
 }
