@@ -2,8 +2,6 @@ package com.khramko.game;
 
 import com.khramko.game.entity.User;
 
-import java.io.IOException;
-import java.util.NoSuchElementException;
 
 public interface UserDAO {
 

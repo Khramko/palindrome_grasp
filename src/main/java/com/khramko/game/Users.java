@@ -55,7 +55,7 @@ public class Users implements Serializable, UserDAO {
 
     @Override
     public User[] getTop5() {
-        ArrayList<User> usersArrayList = new ArrayList<>(this.usersHashMap.values());
+        ArrayList<User> usersArrayList = new ArrayList<>(usersHashMap.values());
         Collections.sort(usersArrayList);
         int usersArrayListSize = usersArrayList.size();
         int tops5ArraySize = Math.min(usersArrayListSize, 5);

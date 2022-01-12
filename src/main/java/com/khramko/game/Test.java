@@ -8,10 +8,18 @@ public class Test {
         palindromeGamePlay.playGame(name, palindromeString);
     }
     public static void main(String[] args) {
-        Users users = Users.getInstance();
+   Users users = Users.getInstance();
+//        users.createUser("Elena");
+//        users.createUser("Olga");
+//        users.createUser("Ekaterina");
+//        users.createUser("Lubov");
+//        users.createUser("Mariya");
 
 
+
+        testGame("Lubov","A tOyota! Race fast, safe car! A tOyota!");
        testGame("Georg","A tOyota! Race fast, safe car! A tOyota!");
+        testGame("Olga","awwa");
 
        testGame("Georg", "m to Greg: Gad! A dagger got m");
 
@@ -21,12 +29,12 @@ public class Test {
 
         testGame("Naomi", "Erupt on Naomi? I moan, Not pure!");
 
-       // Users users = Users.getInstance();
+        users = Users.getInstance();
         User [] top5 = users.getTop5();
         System.out.println();
         System.out.println("Leaders board");
         for (User user : top5) {
-            System.out.println(user.getUserName());
+            System.out.println(user.getUserName() + "  - " + user.getScores());
 
         }
     }
