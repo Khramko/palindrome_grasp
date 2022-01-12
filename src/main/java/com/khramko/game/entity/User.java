@@ -37,9 +37,8 @@ public class User implements Serializable, Comparable<User> {
 
     public boolean isItNewUserString(String cutStr) {
         if (this.enteredPalindromes.isEmpty()) {
-            System.out.println("empty new string");
+            System.out.println("empty enteredPalindromes, new string");
             enteredPalindromes.add(cutStr);
-            System.out.println(enteredPalindromes);
             return true;
         } else if (this.enteredPalindromes.contains(cutStr)) {
             System.out.println("contains string");

@@ -85,7 +85,7 @@ public class Users implements Serializable, UserDAO {
     @Override
     public void createUser(String userName) {
         if (usersHashMap.containsKey(userName)) {
-            throw new IllegalArgumentException("There is already created a user named " + userName);
+            throw new IllegalArgumentException("There is already created a user, named " + userName);
         }
         User userOutput = new User(userName);
         usersHashMap.put(userName, userOutput);
