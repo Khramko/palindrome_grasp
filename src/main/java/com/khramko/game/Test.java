@@ -19,7 +19,7 @@ public class Test {
 
         testGame("Lubov","A tOyota! Race fast, safe car! A tOyota!");
        testGame("Georg","A tOyota! Race fast, safe car! A tOyota!");
-        testGame("Olga","awwa");
+        testGame("Olga","TT");
 
        testGame("Georg", "m to Greg: Gad! A dagger got m");
 
@@ -29,7 +29,7 @@ public class Test {
 
         testGame("Naomi", "Erupt on Naomi? I moan, Not pure!");
 
-        users = Users.getInstance();
+        //users = Users.getInstance();
         User [] top5 = users.getTop5();
         System.out.println();
         System.out.println("Leaders board");
