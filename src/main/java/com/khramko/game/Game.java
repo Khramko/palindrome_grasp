@@ -1,9 +1,6 @@
 package com.khramko.game;
 
 
-
-import java.io.IOException;
-
  abstract class Game {
     UserDAO userDAO;
 
@@ -12,5 +9,5 @@ import java.io.IOException;
     }
 
 
-    protected abstract void playGame(String userName, String str) throws IOException;
+    protected abstract void playGame(String userName, String str);
 }

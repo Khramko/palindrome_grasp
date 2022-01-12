@@ -108,7 +108,7 @@ public class Users implements Serializable, UserDAO {
     @Override
     public void deleteUser(User user) {
         if (usersHashMap.containsKey(user.getUserName())){
-            usersHashMap.remove(user);
+            usersHashMap.remove(user.getUserName());
         Users.saveUsers();
         }else{
             throw new IllegalArgumentException("User " + user.getUserName() + " not found");

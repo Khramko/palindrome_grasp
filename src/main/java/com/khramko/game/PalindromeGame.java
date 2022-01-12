@@ -23,7 +23,7 @@ public class PalindromeGame extends Game {
     }
 
     @Override
-    public void playGame(String userName, String str) throws IOException {
+    public void playGame(String userName, String str) {
         String cutStr = cutString(str);
         User user = userDAO.readUser(userName);
 

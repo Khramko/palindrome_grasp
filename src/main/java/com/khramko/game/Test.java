@@ -6,7 +6,7 @@ import java.io.IOException;
 
 
 public class Test {
-    private static void testGame(String name, String palindromeString) throws IOException {
+    private static void testGame(String name, String palindromeString) {
         Game palindromeGamePlay = new PalindromeGame(Users.getInstance());
         palindromeGamePlay.playGame(name, palindromeString);
     }
